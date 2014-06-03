@@ -1,0 +1,84 @@
+@media only screen and (min-width: 768px) {
+
+#top ul.nav-search
+{
+    display: inline-block;
+    float: right;
+}
+
+#top ul.nav-search > li > a {
+    display: inline-block;
+    padding: 1em; }
+
+#top ul.nav-search > li > a:before {
+    font-family: "FontAwesome";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    text-indent: 0;
+    line-height: 2;
+    content: "\f002";
+    display: inline-block;
+    position: relative;
+    text-indent: 0;
+    line-height: 1; }
+
+#top ul.nav-search > li > ul {
+    width: auto;
+}
+
+#top ul.nav-search > li > ul > li > div {
+    background: #f0f0f0;
+    width: 12em;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 9999;
+    margin: 0; }
+
+#top ul.nav-search li:hover ul > li > div {
+    display: block; }
+
+#top ul.nav-search .widget_woo_search .searchform {
+    margin: 0;
+    border: 0; }
+
+#top ul.nav-search .widget_woo_search .searchform .s {
+    padding: 1.5em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+#top ul.nav-search .widget_woo_search .searchform button.submit {
+    top: 1.2em;
+    right: 11px; }
+
+/* Search (WooCommerce) dropdown */
+#top ul.nav-search .widget_product_search {
+    position: static;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+#top ul.nav-search .widget_product_search #s {
+    margin: 0;
+    border: 0;
+    display: inline-block; }
+
+#top ul.nav-search #searchform button.submit {
+    background: none;
+    color: #666;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    padding: 0; }
+#top ul.nav-search #searchform button.submit:before {
+    color: #666;
+}
+
+}
