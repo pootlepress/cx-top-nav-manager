@@ -91,4 +91,14 @@
     color: #666;
 }
 
+    #top .cart .cart-contents,
+    #top .rss .sub-rss a
+    {
+        padding-bottom: 5px !important;
+    }
+
+#top .cart .sub-menu .widget {
+    font-size: 13px;
+}
+
 }
