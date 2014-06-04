@@ -58,9 +58,9 @@ class Pootlepress_Top_Nav_Manager {
         );
         $this->marginTop = get_option('pootlepress-tnm-margin-top', '0');
         $this->marginBottom = get_option('pootlepress-tnm-margin-bottom', '0');
-        $this->shoppingCartEnabled = get_option('pootlepress-tnm-shopping-cart-enabled', 'true') === 'true';
-        $this->searchIconEnabled = get_option('pootlepress-tnm-search-icon-enabled', 'true') === 'true';
-        $this->subscribeIconEnabled = get_option('pootlepress-tnm-subscribe-icon-enabled', 'true') === 'true';
+        $this->shoppingCartEnabled = get_option('pootlepress-tnm-shopping-cart-enabled', 'false') === 'true';
+        $this->searchIconEnabled = get_option('pootlepress-tnm-search-icon-enabled', 'false') === 'true';
+        $this->subscribeIconEnabled = get_option('pootlepress-tnm-subscribe-icon-enabled', 'false') === 'true';
 
 	} // End __construct()
 

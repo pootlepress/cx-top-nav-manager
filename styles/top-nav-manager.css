@@ -44,19 +44,29 @@
 #top ul.nav-search li:hover ul > li > div {
     display: block; }
 
+#top ul.nav-search .widget_woo_search {
+    position: static;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
 #top ul.nav-search .widget_woo_search .searchform {
     margin: 0;
     border: 0; }
 
 #top ul.nav-search .widget_woo_search .searchform .s {
-    padding: 1.5em;
+    padding: 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
 
 #top ul.nav-search .widget_woo_search .searchform button.submit {
-    top: 1.2em;
-    right: 11px; }
+    top: 7px;
+    right: 6px; }
+
+    #top ul.nav-search .widget_woo_search .searchform button.submit:before {
+        font-size: 13px;
+    }
 
 /* Search (WooCommerce) dropdown */
 #top ul.nav-search .widget_product_search {
