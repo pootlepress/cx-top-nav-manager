@@ -52,6 +52,7 @@ class Pootlepress_Top_Nav_Manager {
 
         add_action('wp_head', array(&$this, 'option_css'), 100);
 
+
         $this->align = get_option('pootlepress-tnm-align', 'Left');
         $this->divider = get_option('pootlepress-tnm-divider',
             array('width' => '0','style' => 'solid','color' => '#000000')
@@ -227,7 +228,7 @@ class Pootlepress_Top_Nav_Manager {
 
         $class = 'cart fr nav';
         if ( 'false' == $settings['nav_rss'] ) { $class .= ' no-rss-link'; }
-        if ( is_woocommerce_activated() && 'true' == $settings['header_cart_link'] ) { ?>
+        if ( is_woocommerce_activated()) { ?>
             <ul class="<?php echo esc_attr( $class ); ?>">
                 <li>
                     <a class="cart-contents" href="<?php echo esc_url( $woocommerce->cart->get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'woothemes' ); ?>">
