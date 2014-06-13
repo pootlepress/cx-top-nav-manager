@@ -1,5 +1,15 @@
 @media only screen and (min-width: 768px) {
 
+    #top > .col-full
+    {
+        height: auto !important;
+        line-height: 0;
+    }
+
+    #top ul.top-navigation > li.parent > a:after {
+        margin-top: 0 !important;
+    }
+
 #top ul.nav-search
 {
     display: inline-block;
@@ -8,7 +18,9 @@
 
 #top ul.nav-search > li > a {
     display: inline-block;
-    padding: 1em; }
+    padding: 1em;
+    vertical-align: top;
+}
 
 #top ul.nav-search > li > a:before {
     font-family: "FontAwesome";
@@ -27,6 +39,9 @@
     text-indent: 0;
     line-height: 1; }
 
+    #top ul.nav-search > li > a:after {
+        margin-top: 0 !important;
+    }
 #top ul.nav-search > li > ul {
     width: auto;
 }
@@ -101,4 +116,8 @@
     font-size: 13px;
 }
 
+#top .nav.rss > .sub-rss > a
+{
+    padding-bottom: 0.5em !important;
+}
 }
