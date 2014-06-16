@@ -116,6 +116,12 @@
     font-size: 13px;
 }
 
+#top .cart .sub-menu
+{
+    right: 0;
+    left: auto;
+}
+
 #top .nav.rss > .sub-rss > a
 {
     padding-bottom: 0.5em !important;
