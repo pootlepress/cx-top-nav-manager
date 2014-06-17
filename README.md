@@ -8,4 +8,6 @@ Instructions
 
 Versions
 
+v1.1.0 - bug fixes & improvements to the way the shop icon works
+
 v1.0 - initial release
