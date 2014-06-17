@@ -122,6 +122,13 @@
     left: auto;
 }
 
+#top .cart .cart_list
+{
+    width: auto;
+    padding-left: 0;
+}
+
+
 #top .nav.rss > .sub-rss > a
 {
     padding-bottom: 0.5em !important;
