@@ -193,7 +193,23 @@ class Pootlepress_Top_Nav_Manager {
 
     public function get_header() {
         remove_action( 'woo_top', 'woo_top_navigation', 10 );
-        add_action('woo_top', array($this, 'woo_top_navigation_custom'));
+
+        // check if page element hider is active and is set to hide top nav
+        include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        if (is_plugin_active('cx-page-element-hider/canvas-pageelementhider.php')) {
+            global $post;
+            $post_meta = get_post_meta( $post->ID );
+            $hide_woo_top_navigation    = false;
+            if ( isset( $post_meta['_hide_woo_top_navigation'] ) ) { $hide_woo_top_navigation       = $post_meta['_hide_woo_top_navigation'][0]; }
+            if ( $hide_woo_top_navigation == 'true' ) {
+                // don't add top nav
+            } else {
+                add_action('woo_top', array($this, 'woo_top_navigation_custom'));
+            }
+        } else {
+            // if no page element hider, add top nav as normal
+            add_action('woo_top', array($this, 'woo_top_navigation_custom'));
+        }
     }
 
     public function woo_top_navigation_custom() {
