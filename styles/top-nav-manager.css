@@ -59,6 +59,20 @@
 #top ul.nav-search li:hover ul > li > div {
     display: block; }
 
+#top ul.nav-search .sub-menu .menu-item .widget_search {
+    padding: 10px;
+    background-color: rgb(85, 85, 85);
+    right: -50px;
+    top: -11px;
+}
+
+#top ul.nav-search .sub-menu .menu-item .widget_search form {
+    margin: 0;
+    width: 100%;
+    border: none;
+    background-color: white;
+}
+
 #top ul.nav-search .widget_woo_search {
     position: static;
     margin-left: 12px;
@@ -88,6 +102,7 @@
     position: static;
     margin-left: 12px;
     margin-right: 12px;
+    padding: 0;
 }
 
 #top ul.nav-search .widget_product_search #s {
@@ -106,14 +121,15 @@
     color: #666;
 }
 
-    #top .cart .cart-contents,
-    #top .rss .sub-rss a
-    {
-        padding-bottom: 5px !important;
-    }
+#top .cart .cart-contents,
+#top .rss .sub-rss a
+{
+    padding-bottom: 5px !important;
+}
 
 #top .cart .sub-menu .widget {
     font-size: 13px;
+    padding: 10px;
 }
 
 #top .cart .sub-menu

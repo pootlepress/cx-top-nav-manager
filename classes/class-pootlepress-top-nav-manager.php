@@ -289,7 +289,7 @@ class Pootlepress_Top_Nav_Manager {
 
             <ul class="nav nav-search">
                 <li class="menu-item">
-                    <a href="#"></a>
+                    <a class="search-contents" href="#"></a>
                     <ul class="sub-menu">
                         <li class="menu-item">
                             <?php
@@ -297,10 +297,15 @@ class Pootlepress_Top_Nav_Manager {
                                 'title' => ''
                             );
 
-                            if ( isset( $woo_options['woo_header_search_scope'] ) && 'products' == $woo_options['woo_header_search_scope'] ) {
+
+                            if ( isset( $woo_options['woo_header_search_scope'] ) &&
+                                'products' == $woo_options['woo_header_search_scope'] &&
+                                class_exists('WC_Widget_Product_Search')
+                            ) {
                                 the_widget( 'WC_Widget_Product_Search', $args );
                             } else {
-                                the_widget( 'Woo_Widget_Search', $args );
+                                the_widget( 'WP_Widget_Search', $args );
+//                                get_search_form();
                             }
                             ?>
                         </li>
