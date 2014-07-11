@@ -3,7 +3,7 @@
     #top
     {
         position: relative; /* needed for z-index */
-        z-index: 1; /* fix box layout for some customer */
+        z-index: 10000; /* fix box layout for some customer */
     }
 
     #top > .col-full
@@ -155,4 +155,5 @@
 {
     padding-bottom: 0.5em !important;
 }
+
 }
