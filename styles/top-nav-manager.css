@@ -1,5 +1,11 @@
 @media only screen and (min-width: 768px) {
 
+    #top
+    {
+        position: relative; /* needed for z-index */
+        z-index: 1; /* fix box layout for some customer */
+    }
+
     #top > .col-full
     {
         height: auto !important;
