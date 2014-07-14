@@ -46,7 +46,7 @@ class Pootlepress_Top_Nav_Manager {
 		// Add the custom theme options.
 		add_filter( 'option_woo_template', array( &$this, 'add_theme_options' ) );
 
-        add_action( 'get_header', array( &$this, 'get_header' ) , 1000);
+        add_action( 'get_header', array( &$this, 'get_header' ) , 1010);
 
         add_action( 'wp_enqueue_scripts', array( &$this, 'load_styles' ) );
 
@@ -192,7 +192,13 @@ class Pootlepress_Top_Nav_Manager {
     }
 
     public function get_header() {
-        remove_action( 'woo_top', 'woo_top_navigation', 10 );
+
+        if (class_exists('Pootlepress_FontAwesome_Menu')) {
+            $fa = $GLOBALS['pootlepress_fontawesome_menu'];
+            remove_action('woo_top', array($fa, 'woo_top_navigation_custom'), 10);
+        } else {
+            remove_action( 'woo_top', 'woo_top_navigation', 10 );
+        }
 
         // check if page element hider is active and is set to hide top nav
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -219,7 +225,16 @@ class Pootlepress_Top_Nav_Manager {
                 <div class="col-full">
                     <?php
                     echo '<h3 class="top-menu">' . woo_get_menu_name( 'top-menu' ) . '</h3>';
-                    wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu' ) );
+
+                    if (class_exists('Pootlepress_FA_Top_Nav_Walker')) {
+                        wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu' ,
+                            'link_before' => '<span>', 'link_after' => '</span>',
+                            'walker' => new Pootlepress_FA_Top_Nav_Walker()
+                        ) );
+                    } else {
+                        wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu' ) );
+                    }
+
 
                     if ($this->shoppingCartEnabled) {
                         $this->woo_add_nav_cart_link();
