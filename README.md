@@ -8,6 +8,8 @@ Instructions
 
 Versions
 
+v1.2 - bug fixes and compatibility with Font Awesome Menu Canvas Extension
+
 v1.1.0 - bug fixes & improvements to the way the shop icon works
 
 v1.0 - initial release
