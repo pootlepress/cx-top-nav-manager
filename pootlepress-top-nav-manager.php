@@ -14,8 +14,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once( 'pootlepress-top-nav-manager-functions.php' );
 require_once( 'classes/class-pootlepress-top-nav-manager.php' );
+require_once( 'classes/class-pootlepress-updater.php');
 
 $GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
 $GLOBALS['pootlepress_top_nav_manager']->version = '1.2';
 
+add_action('init', 'pp_tnm_updater');
+function pp_tnm_updater()
+{
+    if (!function_exists('get_plugin_data')) {
+        include(ABSPATH . 'wp-admin/includes/plugin.php');
+    }
+    $data = get_plugin_data(__FILE__);
+    $wptuts_plugin_current_version = $data['Version'];
+    $wptuts_plugin_remote_path = 'http://www.pootlepress.com/?updater=1';
+    $wptuts_plugin_slug = plugin_basename(__FILE__);
+    new Pootlepress_Updater ($wptuts_plugin_current_version, $wptuts_plugin_remote_path, $wptuts_plugin_slug);
+}
 ?>
