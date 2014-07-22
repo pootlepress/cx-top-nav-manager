@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Top Nav Manager
 Plugin URI: http://pootlepress.com/
 Description: An extension for WooThemes Canvas that allow you to manage top navigation.
-Version: 1.2
+Version: 1.3
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ require_once( 'classes/class-pootlepress-top-nav-manager.php' );
 require_once( 'classes/class-pootlepress-updater.php');
 
 $GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
-$GLOBALS['pootlepress_top_nav_manager']->version = '1.2';
+$GLOBALS['pootlepress_top_nav_manager']->version = '1.3';
 
 add_action('init', 'pp_tnm_updater');
 function pp_tnm_updater()
