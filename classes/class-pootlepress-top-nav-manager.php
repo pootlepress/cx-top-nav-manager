@@ -19,6 +19,7 @@ class Pootlepress_Top_Nav_Manager {
 	public $version;
 	private $file;
 
+    private $enabled;
     private $align;
     private $divider;
     private $marginTop;
@@ -46,11 +47,15 @@ class Pootlepress_Top_Nav_Manager {
 		// Add the custom theme options.
 		add_filter( 'option_woo_template', array( &$this, 'add_theme_options' ) );
 
-        add_action( 'get_header', array( &$this, 'get_header' ) , 1010);
+        $this->enabled = get_option('pootlepress-tnm-enabled', 'true') === 'true';
 
-        add_action( 'wp_enqueue_scripts', array( &$this, 'load_styles' ) );
+        if ($this->enabled) {
+            add_action('get_header', array(&$this, 'get_header'), 1010);
 
-        add_action('wp_head', array(&$this, 'option_css'), 100);
+            add_action('wp_enqueue_scripts', array(&$this, 'load_styles'));
+
+            add_action('wp_head', array(&$this, 'option_css'), 100);
+        }
 
 
         $this->align = get_option('pootlepress-tnm-align', 'Left');
@@ -80,6 +85,14 @@ class Pootlepress_Top_Nav_Manager {
 				'name' => __( 'Top Nav Manager', 'pp-tnm' ),
 				'type' => 'subheading'
 		);
+
+        $o[] = array(
+            "id" => "pootlepress-tnm-enabled",
+            "name" => __( 'Enable Top Nav Manager', 'pp-tnm' ),
+            "desc" => __( 'Enable Top Nav Manager', 'pp-tnm' ),
+            "std" => 'true',
+            "type" => "checkbox"
+        );
 
         $o[] = array(
             'id' => 'pootlepress-tnm-align',
