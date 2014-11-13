@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once( 'pootlepress-top-nav-manager-functions.php' );
 require_once( 'classes/class-pootlepress-top-nav-manager.php' );
+require_once( 'classes/class-pootlepress-canvas-options.php' );
 require_once( 'classes/class-pootlepress-updater.php');
 
 $GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
