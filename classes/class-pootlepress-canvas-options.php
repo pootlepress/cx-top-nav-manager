@@ -20,7 +20,7 @@ if (!class_exists('PootlePress_Canvas_Options')) {
         public function admin_css() {
             echo "<style>\n" .
                 '.settings-section p.description.custom { display: inline-block; }' . "\n" .
-                "<style>\n";
+                "</style>\n";
         }
 
         // user of this class should call add_option at initialization, before any hook is executed
