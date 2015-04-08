@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Top Nav Manager (WCAPI)
 Plugin URI: http://pootlepress.com/
 Description: An extension for WooThemes Canvas that allow you to manage top navigation.
-Version: 2.4
+Version: 2.5
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -12,14 +12,7 @@ Prefix: cxtnm
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-/**
- * Displays an inactive message if the API License Key has not yet been activated
- */
-if ( get_option( 'api_manager_example_activated' ) != 'Activated' ) {
-    add_action( 'admin_notices', 'PPcxTNM_API::am_example_inactive_notice' );
-}
-
-class PPcxTNM_API {
+class PootlePress_Top_Nav_License {
 
 	/**
 	 * Self Upgrade Values
@@ -30,7 +23,7 @@ class PPcxTNM_API {
 	/**
 	 * @var string
 	 */
-	public $version = '2.4'; // UPDATE
+	public $version = '2.5'; // UPDATE
 
 	/**
 	 * @var string
@@ -51,7 +44,7 @@ class PPcxTNM_API {
 	 * http://markjaquith.wordpress.com/2011/10/06/translating-wordpress-plugins-and-themes-dont-get-clever/
 	 * http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/
 	 */
-	public $text_domain = 'pootlepress_cx_top_nav_manager'; // UPDATE
+	public $text_domain = 'pootlepress_top_nav_manager'; // UPDATE
 
 	/**
 	 * Data defaults
@@ -187,13 +180,13 @@ class PPcxTNM_API {
 			$this->ame_plugin_or_theme 		= 'plugin'; // 'theme' or 'plugin'
 
 			// Performs activations and deactivations of API License Keys
-			require_once( plugin_dir_path( __FILE__ ) . 'am/classes/class-wc-key-api.php' );
+			require_once( plugin_dir_path( __FILE__ ) . 'api/classes/pootlepress.top_nav_license.key_api.php' );
 
 			// Checks for software updatess
-			require_once( plugin_dir_path( __FILE__ ) . 'am/classes/class-wc-plugin-update.php' );
+			require_once( plugin_dir_path( __FILE__ ) . 'api/classes/pootlepress.top_nav_license.plugin_update.php' );
 
 			// Admin menu with the license key and license email form
-			require_once( plugin_dir_path( __FILE__ ) . 'am/admin/class-wc-api-manager-menu.php' );
+			require_once( plugin_dir_path( __FILE__ ) . 'api/classes/pootlepress.top_nav_license.menu.php' );
 
 			$options = get_option( $this->ame_data_key );
 
@@ -232,20 +225,20 @@ class PPcxTNM_API {
 	/**
 	 * API Key Class.
 	 *
-	 * @return PPcxTNM_API_Key
+	 * @return PootlePress_Top_Nav_License_Key
 	 */
 	public function key() {
-		return PPcxTNM_API_Key::instance();
+		return PootlePress_Top_Nav_License_Key::instance();
 	}
 
 	/**
 	 * Update Check Class.
 	 *
-	 * @return PPcxTNM_API_Update_API_Check
+	 * @return PootlePress_Top_Nav_License_Update_API_Check
 	 */
 	public function update_check( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra = '' ) {
 
-		return PPcxTNM_API_Update_API_Check::instance( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra );
+		return PootlePress_Top_Nav_License_Update_API_Check::instance( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra );
 	}
 
 	public function plugin_url() {
@@ -269,9 +262,9 @@ class PPcxTNM_API {
 
 		update_option( $this->ame_data_key, $global_options );
 
-		require_once( plugin_dir_path( __FILE__ ) . 'am/classes/class-wc-api-manager-passwords.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'api/classes/pootlepress.top_nav_license.password_management.php' );
 
-		$api_manager_example_password_management = new PPcxTNM_API_Password_Management();
+		$api_manager_example_password_management = new PootlePress_Top_Nav_License_Password_Management();
 
 		// Generate a unique installation $instance id
 		$instance = $api_manager_example_password_management->generate_password( 12, false );
@@ -400,12 +393,19 @@ class PPcxTNM_API {
 
 } // End of class
 
-function PPcxTNM() { // UPDATE
-    return PPcxTNM_API::instance();
+function PPTN_License() { // UPDATE
+    return PootlePress_Top_Nav_License::instance();
 }
 
 // Initialize the class instance only once
-PPcxTNM(); // UPDATE
+PPTN_License(); // UPDATE
+
+/**
+ * Displays an inactive message if the API License Key has not yet been activated
+ */
+if ( get_option( 'api_manager_example_activated' ) != 'Activated' ) {
+    add_action( 'admin_notices', 'PPTN_License::am_example_inactive_notice' );
+}
 
 require_once( 'pootlepress-top-nav-manager-functions.php' );
 require_once( 'classes/class-pootlepress-top-nav-manager.php' );

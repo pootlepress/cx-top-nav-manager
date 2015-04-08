@@ -12,7 +12,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class PPcxTNM_API_Key {
+class PootlePress_Top_Nav_License_Key {
 
     /**
      * @var The single instance of the class
@@ -31,7 +31,7 @@ class PPcxTNM_API_Key {
 	// API Key URL
 	public function create_software_api_url( $args ) {
 
-		$api_url = add_query_arg( 'wc-api', 'am-software-api', PPcxTNM()->upgrade_url );
+		$api_url = add_query_arg( 'wc-api', 'am-software-api', PPTN_License()->upgrade_url );
 
 		return $api_url . '&' . http_build_query( $args );
 	}
@@ -40,10 +40,10 @@ class PPcxTNM_API_Key {
 
 		$defaults = array(
 			'request' 			=> 'activation',
-			'product_id' 		=> PPcxTNM()->ame_product_id,
-			'instance' 			=> PPcxTNM()->ame_instance_id,
-			'platform' 			=> PPcxTNM()->ame_domain,
-			'software_version' 	=> PPcxTNM()->ame_software_version
+			'product_id' 		=> PPTN_License()->ame_product_id,
+			'instance' 			=> PPTN_License()->ame_instance_id,
+			'platform' 			=> PPTN_License()->ame_domain,
+			'software_version' 	=> PPTN_License()->ame_software_version
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -52,7 +52,7 @@ class PPcxTNM_API_Key {
 
 		$request = wp_remote_get( $target_url );
 
-		// $request = wp_remote_post( PPcxTNM()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
+		// $request = wp_remote_post( PPTN_License()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
 
 		if( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		// Request failed
@@ -68,9 +68,9 @@ class PPcxTNM_API_Key {
 
 		$defaults = array(
 			'request' 		=> 'deactivation',
-			'product_id' 	=> PPcxTNM()->ame_product_id,
-			'instance' 		=> PPcxTNM()->ame_instance_id,
-			'platform' 		=> PPcxTNM()->ame_domain
+			'product_id' 	=> PPTN_License()->ame_product_id,
+			'instance' 		=> PPTN_License()->ame_instance_id,
+			'platform' 		=> PPTN_License()->ame_domain
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -79,7 +79,7 @@ class PPcxTNM_API_Key {
 
 		$request = wp_remote_get( $target_url );
 
-		// $request = wp_remote_post( PPcxTNM()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
+		// $request = wp_remote_post( PPTN_License()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
 
 		if( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		// Request failed
@@ -100,9 +100,9 @@ class PPcxTNM_API_Key {
 
 		$defaults = array(
 			'request' 		=> 'status',
-			'product_id' 	=> PPcxTNM()->ame_product_id,
-			'instance' 		=> PPcxTNM()->ame_instance_id,
-			'platform' 		=> PPcxTNM()->ame_domain
+			'product_id' 	=> PPTN_License()->ame_product_id,
+			'instance' 		=> PPTN_License()->ame_instance_id,
+			'platform' 		=> PPTN_License()->ame_domain
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -111,7 +111,7 @@ class PPcxTNM_API_Key {
 
 		$request = wp_remote_get( $target_url );
 
-		// $request = wp_remote_post( PPcxTNM()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
+		// $request = wp_remote_post( PPTN_License()->upgrade_url . 'wc-api/am-software-api/', array( 'body' => $args ) );
 
 		if( is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) != 200 ) {
 		// Request failed

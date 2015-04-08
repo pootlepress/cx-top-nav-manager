@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  */
 
-class PPcxTNM_API_Update_API_Check {
+class PootlePress_Top_Nav_License_Update_API_Check {
 
 	/**
 	 * @var The single instance of the class
