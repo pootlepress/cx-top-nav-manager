@@ -40,10 +40,10 @@ class PootlePress_Top_Nav_License_Key {
 
 		$defaults = array(
 			'request' 			=> 'activation',
-			'product_id' 		=> PPTN_License()->ame_product_id,
-			'instance' 			=> PPTN_License()->ame_instance_id,
-			'platform' 			=> PPTN_License()->ame_domain,
-			'software_version' 	=> PPTN_License()->ame_software_version
+			'product_id' 		=> PPTN_License()->api_product_id,
+			'instance' 			=> PPTN_License()->api_instance_id,
+			'platform' 			=> PPTN_License()->api_domain,
+			'software_version' 	=> PPTN_License()->api_software_version
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -68,9 +68,9 @@ class PootlePress_Top_Nav_License_Key {
 
 		$defaults = array(
 			'request' 		=> 'deactivation',
-			'product_id' 	=> PPTN_License()->ame_product_id,
-			'instance' 		=> PPTN_License()->ame_instance_id,
-			'platform' 		=> PPTN_License()->ame_domain
+			'product_id' 	=> PPTN_License()->api_product_id,
+			'instance' 		=> PPTN_License()->api_instance_id,
+			'platform' 		=> PPTN_License()->api_domain
 			);
 
 		$args = wp_parse_args( $defaults, $args );
@@ -100,9 +100,9 @@ class PootlePress_Top_Nav_License_Key {
 
 		$defaults = array(
 			'request' 		=> 'status',
-			'product_id' 	=> PPTN_License()->ame_product_id,
-			'instance' 		=> PPTN_License()->ame_instance_id,
-			'platform' 		=> PPTN_License()->ame_domain
+			'product_id' 	=> PPTN_License()->api_product_id,
+			'instance' 		=> PPTN_License()->api_instance_id,
+			'platform' 		=> PPTN_License()->api_domain
 			);
 
 		$args = wp_parse_args( $defaults, $args );
