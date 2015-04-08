@@ -74,15 +74,15 @@ class API_Manager_Example_MENU {
 		register_setting( AME()->ame_data_key, AME()->ame_data_key, array( $this, 'validate_options' ) );
 
 		// API Key
-		add_settings_section( AME()->ame_api_key, __( 'API License Activation', AME()->text_domain ), array( $this, 'wc_am_api_key_text' ), AME()->ame_activation_tab_key );
-		add_settings_field( 'status', __( 'API License Key Status', AME()->text_domain ), array( $this, 'wc_am_api_key_status' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
-		add_settings_field( AME()->ame_api_key, __( 'API License Key', AME()->text_domain ), array( $this, 'wc_am_api_key_field' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
-		add_settings_field( AME()->ame_activation_email, __( 'API License email', AME()->text_domain ), array( $this, 'wc_am_api_email_field' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
+		add_settings_section( AME()->ame_api_key, __( 'License Activation', AME()->text_domain ), array( $this, 'wc_am_api_key_text' ), AME()->ame_activation_tab_key );
+		add_settings_field( 'status', __( 'License Key Status', AME()->text_domain ), array( $this, 'wc_am_api_key_status' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
+		add_settings_field( AME()->ame_api_key, __( 'License Key', AME()->text_domain ), array( $this, 'wc_am_api_key_field' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
+		add_settings_field( AME()->ame_activation_email, __( 'License email', AME()->text_domain ), array( $this, 'wc_am_api_email_field' ), AME()->ame_activation_tab_key, AME()->ame_api_key );
 
 		// Activation settings
 		register_setting( AME()->ame_deactivate_checkbox, AME()->ame_deactivate_checkbox, array( $this, 'wc_am_license_key_deactivation' ) );
-		add_settings_section( 'deactivate_button', __( 'API License Deactivation', AME()->text_domain ), array( $this, 'wc_am_deactivate_text' ), AME()->ame_deactivation_tab_key );
-		add_settings_field( 'deactivate_button', __( 'Deactivate API License Key', AME()->text_domain ), array( $this, 'wc_am_deactivate_textarea' ), AME()->ame_deactivation_tab_key, 'deactivate_button' );
+		add_settings_section( 'deactivate_button', __( 'License Deactivation', AME()->text_domain ), array( $this, 'wc_am_deactivate_text' ), AME()->ame_deactivation_tab_key );
+		add_settings_field( 'deactivate_button', __( 'Deactivate License Key', AME()->text_domain ), array( $this, 'wc_am_deactivate_textarea' ), AME()->ame_deactivation_tab_key, 'deactivate_button' );
 
 	}
 
