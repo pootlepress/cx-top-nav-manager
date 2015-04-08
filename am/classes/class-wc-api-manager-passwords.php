@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  */
 
-class API_Manager_Example_Password_Management {
+class PPcxTNM_API_Password_Management {
 
 	private function rand( $min = 0, $max = 0 ) {
 		global $rnd_value;

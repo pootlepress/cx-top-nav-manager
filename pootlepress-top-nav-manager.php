@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Top Nav Manager (WCAPI)
 Plugin URI: http://pootlepress.com/
 Description: An extension for WooThemes Canvas that allow you to manage top navigation.
-Version: 2.0
+Version: 2.4
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -16,20 +16,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Displays an inactive message if the API License Key has not yet been activated
  */
 if ( get_option( 'api_manager_example_activated' ) != 'Activated' ) {
-    add_action( 'admin_notices', 'API_Manager_Example::am_example_inactive_notice' );
+    add_action( 'admin_notices', 'PPcxTNM_API::am_example_inactive_notice' );
 }
-class API_Manager_Example {
+
+class PPcxTNM_API {
 
 	/**
 	 * Self Upgrade Values
 	 */
 	// Base URL to the remote upgrade API Manager server. If not set then the Author URI is used.
-	public $upgrade_url = 'http://pp.ultrasimplified.com/';
+	public $upgrade_url = 'http://pp.ultrasimplified.com/'; // UPDATE
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.1';
+	public $version = '2.4'; // UPDATE
 
 	/**
 	 * @var string
@@ -50,7 +51,7 @@ class API_Manager_Example {
 	 * http://markjaquith.wordpress.com/2011/10/06/translating-wordpress-plugins-and-themes-dont-get-clever/
 	 * http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/
 	 */
-	public $text_domain = 'api-manager-example';
+	public $text_domain = 'pootlepress_cx_top_nav_manager'; // UPDATE
 
 	/**
 	 * Data defaults
@@ -231,20 +232,20 @@ class API_Manager_Example {
 	/**
 	 * API Key Class.
 	 *
-	 * @return Api_Manager_Example_Key
+	 * @return PPcxTNM_API_Key
 	 */
 	public function key() {
-		return Api_Manager_Example_Key::instance();
+		return PPcxTNM_API_Key::instance();
 	}
 
 	/**
 	 * Update Check Class.
 	 *
-	 * @return API_Manager_Example_Update_API_Check
+	 * @return PPcxTNM_API_Update_API_Check
 	 */
 	public function update_check( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra = '' ) {
 
-		return API_Manager_Example_Update_API_Check::instance( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra );
+		return PPcxTNM_API_Update_API_Check::instance( $upgrade_url, $plugin_name, $product_id, $api_key, $activation_email, $renew_license_url, $instance, $domain, $software_version, $plugin_or_theme, $text_domain, $extra );
 	}
 
 	public function plugin_url() {
@@ -270,7 +271,7 @@ class API_Manager_Example {
 
 		require_once( plugin_dir_path( __FILE__ ) . 'am/classes/class-wc-api-manager-passwords.php' );
 
-		$api_manager_example_password_management = new API_Manager_Example_Password_Management();
+		$api_manager_example_password_management = new PPcxTNM_API_Password_Management();
 
 		// Generate a unique installation $instance id
 		$instance = $api_manager_example_password_management->generate_password( 12, false );
@@ -399,16 +400,15 @@ class API_Manager_Example {
 
 } // End of class
 
-function AME() {
-    return API_Manager_Example::instance();
+function PPcxTNM() { // UPDATE
+    return PPcxTNM_API::instance();
 }
 
 // Initialize the class instance only once
-AME();
+PPcxTNM(); // UPDATE
 
 require_once( 'pootlepress-top-nav-manager-functions.php' );
 require_once( 'classes/class-pootlepress-top-nav-manager.php' );
 require_once( 'classes/class-pootlepress-canvas-options.php' );
 
 $GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
-$GLOBALS['pootlepress_top_nav_manager']->version = '2.0';
