@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Top Nav Manager (API version)
 Plugin URI: http://pootlepress.com/
 Description: An extension for WooThemes Canvas that allow you to manage top navigation. This plugin uses WooCommerce API Manager to handle upgrades and licensing.
-Version: 2.8
+Version: 2.9
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ class PootlePress_Top_Nav_License {
 	/**
 	 * @var string
 	 */
-	public $version = '2.8';
+	public $version = '2.9';
 
 	/**
 	 * @var string
@@ -407,13 +407,10 @@ function PPTN_License() {
 // Initialize the class instance only once
 PPTN_License(); 
 
-// only allow plugin to run if it has been activated
-if ( get_option( 'pp_top_nav_manager_license_activated' ) == 'Activated' ) {
-        
-    require_once( 'pootlepress-top-nav-manager-functions.php' );
-    require_once( 'classes/class-pootlepress-top-nav-manager.php' );
-    require_once( 'classes/class-pootlepress-canvas-options.php' );
-    
-    $GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
-}
+require_once( 'pootlepress-top-nav-manager-functions.php' );
+require_once( 'classes/class-pootlepress-top-nav-manager.php' );
+require_once( 'classes/class-pootlepress-canvas-options.php' );
+
+$GLOBALS['pootlepress_top_nav_manager'] = new Pootlepress_Top_Nav_Manager( __FILE__ );
+
 
