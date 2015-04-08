@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Canvas Extension - Top Nav Manager (WCAPI)
+Plugin Name: Canvas Extension - Top Nav Manager (API version)
 Plugin URI: http://pootlepress.com/
-Description: An extension for WooThemes Canvas that allow you to manage top navigation.
-Version: 2.6
+Description: An extension for WooThemes Canvas that allow you to manage top navigation. This plugin uses WooCommerce API Manager to handle upgrades and licensing.
+Version: 2.8
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ class PootlePress_Top_Nav_License {
 	/**
 	 * @var string
 	 */
-	public $version = '2.6';
+	public $version = '2.8';
 
 	/**
 	 * @var string
@@ -144,11 +144,11 @@ class PootlePress_Top_Nav_License {
 			/**
 			 * Set all data defaults here
 			 */
-			$this->api_data_key 				= 'api_manager_example';
+			$this->api_data_key 				= 'pp_top_nav_manager';
 			$this->api_api_key 					= 'api_key';
 			$this->api_activation_email 		= 'activation_email';
-			$this->api_product_id_key 			= 'api_manager_example_product_id';
-			$this->api_instance_key 			= 'api_manager_example_instance';
+			$this->api_product_id_key 			= 'pp_top_nav_manager_license_product_id';
+			$this->api_instance_key 			= 'pp_top_nav_manager_license_instance';
 			$this->api_deactivate_checkbox_key 	= 'pp_top_nav_manager_license_deactivate_checkbox';
 			$this->api_activated_key 			= 'pp_top_nav_manager_license_activated';
 
@@ -157,7 +157,7 @@ class PootlePress_Top_Nav_License {
 			 */
 			$this->api_deactivate_checkbox 			= 'am_deactivate_example_checkbox';
 			$this->api_activation_tab_key 			= 'pootlepress_top_nav_manager_license_dashboard';
-			$this->api_deactivation_tab_key 		= 'api_manager_example_deactivation';
+			$this->api_deactivation_tab_key 		= 'pootlepress_top_nav_manager_license_deactivation';
 			$this->api_settings_menu_title 			= 'Top Nav Manager';
 			$this->api_settings_title 				= 'Canvas Extensions - Top Nav Manager';
 			$this->api_menu_tab_activation_title 	= __( 'License Activation', 'pootlepress_top_nav_manager' );
