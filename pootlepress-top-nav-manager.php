@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Top Nav Manager (API version)
 Plugin URI: http://pootlepress.com/
 Description: An extension for WooThemes Canvas that allow you to manage top navigation. This plugin uses WooCommerce API Manager to handle upgrades and licensing.
-Version: 2.9
+Version: 3.0
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -25,12 +25,12 @@ class PootlePress_Top_Nav_License {
 	 * Self Upgrade Values
 	 */
 	// Base URL to the remote upgrade API Manager server. If not set then the Author URI is used.
-	public $upgrade_url = 'http://pp.ultrasimplified.com/'; 
+	public $upgrade_url = 'http://www.pootlepress.com/'; 
 
 	/**
 	 * @var string
 	 */
-	public $version = '2.9';
+	public $version = '3.0';
 
 	/**
 	 * @var string
