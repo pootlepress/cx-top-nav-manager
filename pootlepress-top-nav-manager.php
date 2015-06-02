@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Displays an inactive message if the API License Key has not yet been activated
  */
 if ( get_option( 'pp_top_nav_manager_license_activated' ) != 'Activated' ) {
-    add_action( 'admin_notices', 'PootlePress_Top_Nav_License::am_example_inactive_notice' );
+    add_action( 'admin_notices', 'PootlePress_Top_Nav_License::api_inactive_notice' );
 }
 
 class PootlePress_Top_Nav_License {
@@ -36,7 +36,7 @@ class PootlePress_Top_Nav_License {
 	 * @var string
 	 * This version is saved after an upgrade to compare this db version to $version
 	 */
-	public $api_manager_example_version_name = 'plugin_api_manager_example_version';
+	public $api_version_name = 'version 3';
 
 	/**
 	 * @var string
@@ -86,7 +86,7 @@ class PootlePress_Top_Nav_License {
 
 	public $api_update_version;
 
-	public $api_update_check = 'am_example_plugin_update_check';
+	public $api_update_check = 'pp_top_nav_manager_plugin_update_check';
 
 	/**
 	 * Used to send any extra information.
@@ -155,7 +155,7 @@ class PootlePress_Top_Nav_License {
 			/**
 			 * Set all admin menu data
 			 */
-			$this->api_deactivate_checkbox 			= 'am_deactivate_example_checkbox';
+			$this->api_deactivate_checkbox 			= 'pootlepress_top_nav_manager_deactivate_checkbox';
 			$this->api_activation_tab_key 			= 'pootlepress_top_nav_manager_license_dashboard';
 			$this->api_deactivation_tab_key 		= 'pootlepress_top_nav_manager_license_deactivation';
 			$this->api_settings_menu_title 			= 'Top Nav Manager';
@@ -169,7 +169,7 @@ class PootlePress_Top_Nav_License {
 			$this->api_options 				= get_option( $this->api_data_key );
 			$this->api_plugin_name 			= untrailingslashit( plugin_basename( __FILE__ ) ); // same as plugin slug. if a theme use a theme name like 'twentyeleven'
 			$this->api_product_id 			= get_option( $this->api_product_id_key ); // Software Title
-			$this->api_renew_license_url 	= 'http://pp.ultrasimplified.com/my-account'; // URL to renew a license. Trailing slash in the upgrade_url is required.
+			$this->api_renew_license_url 	= 'http://www.pootlepress.com/my-account'; // URL to renew a license. Trailing slash in the upgrade_url is required.
 			$this->api_instance_id 			= get_option( $this->api_instance_key ); // Instance ID (unique to each blog activation)
 			/**
 			 * Some web hosts have security policies that block the : (colon) and // (slashes) in http://,
@@ -271,10 +271,10 @@ class PootlePress_Top_Nav_License {
 
 		require_once( plugin_dir_path( __FILE__ ) . 'api/classes/pootlepress.top_nav_license.password_management.php' );
 
-		$api_manager_example_password_management = new PootlePress_Top_Nav_License_Password_Management();
+		$pp_top_nav_manager_password_management = new PootlePress_Top_Nav_License_Password_Management();
 
 		// Generate a unique installation $instance id
-		$instance = $api_manager_example_password_management->generate_password( 12, false );
+		$instance = $pp_top_nav_manager_password_management->generate_password( 12, false );
 
 		$single_options = array(
 			$this->api_product_id_key 			=> $this->api_software_product_id,
@@ -287,12 +287,12 @@ class PootlePress_Top_Nav_License {
 			update_option( $key, $value );
 		}
 
-		$curr_ver = get_option( $this->api_manager_example_version_name );
+		$curr_ver = get_option( $this->api_version_name );
 
 		// checks if the current plugin version is lower than the version being installed
 		if ( version_compare( $this->version, $curr_ver, '>' ) ) {
 			// update the version
-			update_option( $this->api_manager_example_version_name, $this->version );
+			update_option( $this->api_version_name, $this->version );
 		}
 
 	}
@@ -367,7 +367,7 @@ class PootlePress_Top_Nav_License {
     /**
      * Displays an inactive notice when the software is inactive.
      */
-	public static function am_example_inactive_notice() { ?>
+	public static function api_inactive_notice() { ?>
 		<?php if ( ! current_user_can( 'manage_options' ) ) return; ?>
 		<?php if ( isset( $_GET['page'] ) && 'pootlepress_top_nav_manager_license_dashboard' == $_GET['page'] ) return; ?>
 		<div id="message" class="error">
